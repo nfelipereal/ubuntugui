@@ -1,8 +1,11 @@
 #!/bin/bash
 
-# Atualizar o sistema
+# Definir DEBIAN_FRONTEND como noninteractive para evitar janelas interativas
+export DEBIAN_FRONTEND=noninteractive
+
+# Atualizar o sistema sem interações
 sudo apt-get update -y
-sudo apt-get upgrade -y
+sudo apt-get -yq upgrade
 
 # Abrir portas
 sudo iptables -I INPUT -m state --state NEW -p tcp --dport 3389 -j ACCEPT
@@ -20,7 +23,7 @@ sudo swapon /swapfile
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 
 # Instalar LXDE e XRDP
-sudo apt-get install lxde xrdp -y
+sudo apt-get install lxde xrdp -yq
 
 # Gerar senha aleatória
 SENHA=$(openssl rand -base64 12)
