@@ -25,8 +25,8 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 # Instalar LXDE e XRDP
 sudo apt-get install lxde xrdp -yq
 
-# Gerar senha aleatória
-SENHA=$(openssl rand -base64 12)
+# Definir a senha padrão numérica de 8 dígitos
+SENHA="12545412"
 
 # Configurar senha do usuário automaticamente
 echo -e "$SENHA\n$SENHA" | sudo passwd ubuntu
